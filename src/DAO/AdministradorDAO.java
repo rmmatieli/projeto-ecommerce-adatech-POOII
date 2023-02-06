@@ -38,7 +38,6 @@ public class AdministradorDAO {
 
         System.out.println("Informe o nome do Produto: ");
         String nome = scanner.nextLine();
-        scanner.nextLine();
 
         System.out.println("Informe o preço do Produto: ");
         Double preco = scanner.nextDouble();
@@ -46,8 +45,6 @@ public class AdministradorDAO {
 
        System.out.println("Informe a marca do Produto:");
        String marca = scanner.nextLine();
-
-       scanner.close();
 
         Produto produto = new Produto(id,nome,preco,categoria,marca);
         System.out.println(produto);
@@ -115,14 +112,22 @@ public class AdministradorDAO {
                     default:
                         System.out.println("Opção inválida!");
                 }
-
-            }else {
-                System.out.println("F no chat");
             }
         }
     }
 
     public static void removerProduto(){
+        Scanner scanner = new Scanner(System.in);
 
+        System.out.println("Informe o ID do Produto que deseja remover: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+
+        for (int i = 0; i < listaDeProdutos.size(); i++) {
+            if (listaDeProdutos.get(i).getId() == id) {
+                //System.out.println(listaDeProdutos.get(i));
+                listaDeProdutos.remove(listaDeProdutos.get(i));
+            }
+        }
     }
 }

@@ -37,17 +37,26 @@ public class Main {
         System.out.println(admin1);
 
         Produto produto1 = new Produto(1001,"Smartphone Samsung S20 FE 128GB",2000.00, 1, "Samsung");
+        Produto produto2 = new Produto(1002,"IPhone 14 256GB",5000.00, 1, "Apple");
         //System.out.println(produto1);
 
         AdministradorDAO.listaDeProdutos.add(produto1);
-        System.out.println(AdministradorDAO.listaDeProdutos);
-
-        //Editar Produto
-        AdministradorDAO.editarProduto();
-        System.out.println(AdministradorDAO.listaDeProdutos);
+        AdministradorDAO.listaDeProdutos.add(produto2);
+        AdministradorDAO.visualizarListaDeProdutos();
 
         //Cadastrar Produto
+        System.out.println("CADASTRANDO UM NOVO PRODUTO");
         AdministradorDAO.cadastrarProduto();
-        System.out.println(AdministradorDAO.listaDeProdutos);
+        AdministradorDAO.visualizarListaDeProdutos();
+
+        //Editar Produto
+        System.out.println("EDITANDO PRODUTO");
+        AdministradorDAO.editarProduto();
+        AdministradorDAO.visualizarListaDeProdutos();
+
+        //Removendo Produto
+        System.out.println("REMOVENDO PRODUTO");
+        AdministradorDAO.removerProduto();
+        AdministradorDAO.visualizarListaDeProdutos();
     }
 }
