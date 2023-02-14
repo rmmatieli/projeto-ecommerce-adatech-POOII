@@ -25,23 +25,73 @@ PRODUTOS
 5 - Ordernar por preço (ordem crescente e decrescente)
  */
 
-import DAO.AdministradorDAO;
-import Produtos.CategoriasInterface;
-import Produtos.Produto;
+import Produtos.*;
 import Usuarios.Administrador;
+import Usuarios.ClientePessoFisica;
+
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
-        Administrador admin1 = new Administrador(1001,"João","Silva","M","28/12/19980","11122233344");
+        System.out.println("--------------- Usuários Cadastrados --------------");
+        ClientePessoFisica usuario1 = new ClientePessoFisica("João", "Silva", "joao.silva", "M", "28/12/1998","senha1","11122233344");
+        System.out.println(usuario1);
+
+        Administrador administrador1 = new Administrador("Lucas", "Almeida", "lucas.almeida", "M", "01/01/1999","senha2","99988877766");
+        System.out.println(administrador1);
+
+        System.out.println();
+        System.out.println("--------------- Cadastrando Produtos --------------");
+        Produto produto1 = new Produto(1001, "Smartphone Samsung S20 FE 128GB", 2000.00, CategoriasInterface.CATEGORIAS[1], "Samsung");
+        Produto produto2 = new Produto(1002, "IPhone 14 256GB", 5000.00, CategoriasInterface.CATEGORIAS[1], "Apple");
+
+
+        CadastrarProduto.cadastrarProduto(usuario1.validaLoginAdm(), produto1);
+        CadastrarProduto.cadastrarProduto(administrador1.validaLoginAdm(), produto1);
+        CadastrarProduto.cadastrarProduto(administrador1.validaLoginAdm(), produto2);
+
+        System.out.println();
+        System.out.println("--------------- Visualizando Lista de Produtos --------------");
+        VisualizarListaDeProdutos.visualizarListaDeProdutos();
+
+        System.out.println();
+        System.out.println("--------------- Filtrar por Categoria --------------");
+        VisualizarListaDeProdutos.filtrarLista("categoria", "Livro");
+        VisualizarListaDeProdutos.filtrarLista("categoria", "Informática");
+
+        System.out.println();
+        System.out.println("--------------- Filtrar por Marca --------------");
+        VisualizarListaDeProdutos.filtrarLista("marca", "Samsung");
+        VisualizarListaDeProdutos.filtrarLista("marca", "Motorola");
+
+        System.out.println();
+        System.out.println("--------------- Editar Produto --------------");
+        EditarProduto.editarProduto(usuario1.validaLoginAdm());
+        EditarProduto.editarProduto(administrador1.validaLoginAdm());
+
+        System.out.println();
+        System.out.println("--------------- Remover Produto --------------");
+        RemoverProduto.removerProduto(usuario1.validaLoginAdm(), 1001);
+        RemoverProduto.removerProduto(administrador1.validaLoginAdm(), 1001);
+
+        System.out.println();
+        System.out.println("--------------- Forma De Pagamento --------------");
+        FinalizarCarrinho.validaPagamento("Cartão de Crédito", 2000.01);
+        FinalizarCarrinho.validaPagamento("Cartão de Crédito", 1000.01);
+
+
+
+        /*
+        Administrador admin1 = new Administrador(1001, "João", "Silva", "M", "28/12/19980", "Administrador","11122233344");
         System.out.println(admin1);
 
-        Produto produto1 = new Produto(1001,"Smartphone Samsung S20 FE 128GB",2000.00, 1, "Samsung");
-        Produto produto2 = new Produto(1002,"IPhone 14 256GB",5000.00, 1, "Apple");
+        Produto produto1 = new Produto(1001, "Smartphone Samsung S20 FE 128GB", 2000.00, 1, "Samsung");
+        Produto produto2 = new Produto(1002, "IPhone 14 256GB", 5000.00, 1, "Apple");
         //System.out.println(produto1);
 
-        AdministradorDAO.listaDeProdutos.add(produto1);
-        AdministradorDAO.listaDeProdutos.add(produto2);
+        //AdministradorDAO.listaDeProdutos.add(produto1);
+        //AdministradorDAO.listaDeProdutos.add(produto2);
         AdministradorDAO.visualizarListaDeProdutos();
 
         //Cadastrar Produto
@@ -58,5 +108,8 @@ public class Main {
         System.out.println("REMOVENDO PRODUTO");
         AdministradorDAO.removerProduto();
         AdministradorDAO.visualizarListaDeProdutos();
+
+         */
     }
+
 }

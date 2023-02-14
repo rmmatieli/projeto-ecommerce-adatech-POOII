@@ -2,20 +2,18 @@ package Usuarios;
 
 public abstract class Usuario {
 
-    private int id;
+    private static int id;
     private String nome;
     private String sobrenome;
+    private String nomeUsuario;
     private String sexo;
     private String dataNascimento;
+    private String tipoUsuario = "Normal";
+    private String senha;
 
     public int getId() {
         return id;
     }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getNome() {
         return nome;
     }
@@ -30,6 +28,14 @@ public abstract class Usuario {
 
     public void setSobrenome(String sobrenome) {
         this.sobrenome = sobrenome;
+    }
+
+    public String getNomeUsuario() {
+        return nomeUsuario;
+    }
+
+    public void setNomeUsuario(String nomeUsuario) {
+        this.nomeUsuario = nomeUsuario;
     }
 
     public String getSexo() {
@@ -48,22 +54,48 @@ public abstract class Usuario {
         this.dataNascimento = dataNascimento;
     }
 
-    public Usuario(int id, String nome, String sobrenome, String sexo, String dataNascimento) {
-        this.id = id;
-        this.nome = nome;
-        this.sobrenome = sobrenome;
-        this.sexo = sexo;
-        this.dataNascimento = dataNascimento;
+    public String getTipoUsuario() {
+        return tipoUsuario;
     }
 
+    public void setTipoUsuario(String tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public Usuario(String nome, String sobrenome, String nomeUsuario, String sexo, String dataNascimento, String senha) {
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+        this.nomeUsuario = nomeUsuario;
+        this.sexo = sexo;
+        this.dataNascimento = dataNascimento;
+        this.senha = senha;
+        atualizaId();
+    }
+
+    public void atualizaId(){
+        id++;
+    }
     @Override
     public String toString() {
         return "Usuario{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", sobrenome='" + sobrenome + '\'' +
+                ", nomeUsuario='" + nomeUsuario + '\'' +
                 ", sexo='" + sexo + '\'' +
                 ", dataNascimento='" + dataNascimento + '\'' +
+                ", tipoUsuario='" + tipoUsuario + '\'' +
+                ", senha='" + senha + '\'' +
                 '}';
     }
+
+    public abstract boolean validaLoginAdm();
 }

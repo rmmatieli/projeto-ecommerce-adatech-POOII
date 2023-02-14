@@ -1,5 +1,8 @@
 package Produtos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Produto implements CategoriasInterface{
 
     private int id;
@@ -48,11 +51,11 @@ public class Produto implements CategoriasInterface{
         this.marca = marca;
     }
 
-    public Produto(int id, String nome, Double preco, int categoria, String marca) {
+    public Produto(int id, String nome, Double preco, String categoria, String marca) {
         this.id = id;
         this.nome = nome;
         this.preco = preco;
-        this.categoria = CategoriasInterface.CATEGORIAS[categoria];
+        this.categoria = categoria;
         this.marca = marca;
     }
 
@@ -65,5 +68,23 @@ public class Produto implements CategoriasInterface{
                 ", categoria='" + categoria + '\'' +
                 ", marca='" + marca + '\'' +
                 '}';
+    }
+
+    public static List<Produto> listaDeProdutos = new ArrayList<>();
+
+    public static void listarCategoria(){
+        int indiceMenu = 0;
+        for (String a : CategoriasInterface.CATEGORIAS) {
+            System.out.printf("%s - %s %n", indiceMenu, a);
+            indiceMenu++;
+        }
+        /*
+        System.out.println("""
+                0 - Livro
+                1 - Informatica
+                2 - Mercado
+                """);
+
+         */
     }
 }

@@ -1,9 +1,5 @@
 package Usuarios;
 
-import DAO.UsuarioDAO;
-
-import java.util.List;
-
 public class ClientePessoaJuridica extends Usuario {
 
     private String cnpj;
@@ -16,9 +12,15 @@ public class ClientePessoaJuridica extends Usuario {
         this.cnpj = CNPJ;
     }
 
-    public ClientePessoaJuridica(int id, String nome, String sobrenome, String sexo, String dataNascimento, String cnpj) {
-        super(id, nome, sobrenome, sexo, dataNascimento);
+    public ClientePessoaJuridica(String nome, String sobrenome, String nomeUsuario, String sexo, String dataNascimento, String senha, String cnpj) {
+        super(nome, sobrenome, nomeUsuario, sexo, dataNascimento, senha);
         this.cnpj = cnpj;
+    }
+
+    @Override
+    public boolean validaLoginAdm() {
+        System.out.printf("Usuário %s não possui essa permissão!%n", getNomeUsuario());
+        return false;
     }
 
 }
