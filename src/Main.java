@@ -45,11 +45,12 @@ public class Main {
         System.out.println("--------------- Cadastrando Produtos --------------");
         Produto produto1 = new Produto(1001, "Smartphone Samsung S20 FE 128GB", 2000.00, CategoriasInterface.CATEGORIAS[1], "Samsung");
         Produto produto2 = new Produto(1002, "IPhone 14 256GB", 5000.00, CategoriasInterface.CATEGORIAS[1], "Apple");
-
+        Produto produto3 = new Produto(1003, "Livro Legal", 35.00, CategoriasInterface.CATEGORIAS[0], "LivrariaCultura");
 
         CadastrarProduto.cadastrarProduto(usuario1.validaLoginAdm(), produto1);
         CadastrarProduto.cadastrarProduto(administrador1.validaLoginAdm(), produto1);
         CadastrarProduto.cadastrarProduto(administrador1.validaLoginAdm(), produto2);
+        CadastrarProduto.cadastrarProduto(administrador1.validaLoginAdm(), produto3);
 
         System.out.println();
         System.out.println("--------------- Visualizando Lista de Produtos --------------");
@@ -59,11 +60,20 @@ public class Main {
         System.out.println("--------------- Filtrar por Categoria --------------");
         VisualizarListaDeProdutos.filtrarLista("categoria", "Livro");
         VisualizarListaDeProdutos.filtrarLista("categoria", "Informática");
+        VisualizarListaDeProdutos.filtrarLista("categoria", "Mercado");
 
         System.out.println();
         System.out.println("--------------- Filtrar por Marca --------------");
         VisualizarListaDeProdutos.filtrarLista("marca", "Samsung");
         VisualizarListaDeProdutos.filtrarLista("marca", "Motorola");
+
+        System.out.println();
+        System.out.println("--------------- Ordernar por Nome --------------");
+        VisualizarListaDeProdutos.ordenarLista("nome");
+
+        System.out.println();
+        System.out.println("--------------- Ordernar por Preço --------------");
+        VisualizarListaDeProdutos.ordenarLista("preco");
 
         System.out.println();
         System.out.println("--------------- Editar Produto --------------");
